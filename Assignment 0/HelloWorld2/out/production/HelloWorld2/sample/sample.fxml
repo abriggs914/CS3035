@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?language javascript?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="180.0" prefWidth="250.0" style="-fx-background-color: dodgerblue;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <fx:script>
+        function reactToClick() {
+            myLabel.setText("Hello CS3053!");
+        }
+    </fx:script>
+    <Button fx:id="myButton" alignment="TOP_LEFT" mnemonicParsing="false" onAction="reactToClick();" text="Say Hello!" />
+    <Label fx:id="myLabel" layoutX="73.0" layoutY="72.0" prefHeight="37.0" prefWidth="105.0" textAlignment="CENTER" textFill="WHITE">
+        <font>
+            <Font name="System Bold" size="14.0" />
+        </font>
+        <effect>
+            <Glow />
+        </effect>
+    </Label>
+
+</AnchorPane>
