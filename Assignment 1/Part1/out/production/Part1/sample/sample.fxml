@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?language javascript?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
@@ -9,23 +11,51 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.172-ea"
+          xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <columnConstraints>
-      <ColumnConstraints />
+      <ColumnConstraints/>
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints />
+      <RowConstraints/>
    </rowConstraints>
-   <children>
-      <VBox prefHeight="269.0" prefWidth="287.0">
-         <children>
-            <Slider id="slider" prefHeight="44.0" prefWidth="227.0" />
-            <Label id="sliderReport" prefHeight="48.0" prefWidth="134.0">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Button id="quitButton" mnemonicParsing="false" text="QUIT" />
-         </children></VBox>
-   </children>
+   <fx:script>
+      function setLabel() {
+         var sliderVal = slider.getValue();
+         var report = parseInt(sliderVal) + ".0";
+         reportSlider.setText(report);
+      }
+
+      function exitGame() {
+         print("GoodBye!");
+         quit()
+      }
+   </fx:script>
+   <VBox prefHeight="155.0" prefWidth="287.0">
+      <padding>
+         <Insets bottom="25" left="25" right="25" top="25"/>
+      </padding>
+      <Slider fx:id="slider"
+              onMouseClicked="setLabel()"
+              onMouseDragged="setLabel()"
+              prefHeight="44.0"
+              prefWidth="227.0"
+              min="150"
+              max="1000"
+              value="275.0"
+      />
+      <Label fx:id="reportSlider"
+             text="275.0"
+             prefHeight="48.0"
+             prefWidth="134.0">
+         <font>
+            <Font size="24.0"/>
+         </font>
+      </Label>
+      <Button fx:id="quitButton"
+              mnemonicParsing="false"
+              text="QUIT"
+              onMouseClicked="exitGame()"
+      />
+   </VBox>
 </GridPane>
