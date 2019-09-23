@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Part2:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Part2_jar</output-path>
+    <root id="archive" name="Part2.jar">
+      <element id="module-output" name="Part2" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/sample/BarControl.java" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/sample/Main.java" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/sample/sample.fxml" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/sample/Controller.java" />
+    </root>
+  </artifact>
+</component>
