@@ -5,64 +5,22 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
-import java.awt.*;
+import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Random;
 
 public class RowLayoutPane extends Pane {
 
-    public static enum Position {TOP, CENTER, FILL};
+    public enum Position {TOP, CENTER, FILL}
 
-    static ArrayList<Widget> widgetsList;
-    static ArrayList<RowCell> rowCells;
-    static Canvas canvas;
+    private static ArrayList<Widget> widgetsList;
+    private static ArrayList<RowCell> rowCells;
+    private static Canvas canvas;
+    private double width;
+    private double height;
 
-    RowLayoutPane(double width, double height) {
-        widgetsList = new ArrayList<>();
-        canvas = new Canvas(width, height);
-    }
-
-    Canvas getCanvas() {
-        drawRow();
-        return canvas;
-    }
-
-    static ArrayList<Widget> getWidgetsList() {
-        return widgetsList;
-    }
-
-    public void addWidget(Widget w) {
-        RowCell rowCell = new RowCell();
-        rowCell.setWidget(w);
-        rowCell.positionWidgetVertical();
-        widgetsList.add(w);
-    }
-
-    public void setVerticalPosition(Widget w, Position position) {
-        // sets the given widget’s vertical position as TOP, CENTER, or FILL
-        w.setPosition(position);
-    }
-
-    public void drawRow() {
-        //draws the current layout to the canvas. This method should also draw text to show the min, pref, max, and actual
-        //width of the RowLayoutPane (note: the first three are based on the widths of the child widgets in the RowLayoutPane)
-        GraphicsContext gc = canvas.getGraphicsContext2D();
-        for (Widget w : widgetsList) {
-            setVerticalPosition(w, genRandomPosition());
-            w.draw(gc);
-        }
-    }
-
-    public Position genRandomPosition() {
-        Random rnd = new Random();
-        int rndNum = rnd.nextInt(3);
-        switch (rndNum) {
-            case 0 : return Position.TOP;
-            case 1 : return Position.CENTER;
-            case 2 : return Position.FILL;
-            default: return Position.FILL;
-        }
-    }
+    private double minWidth;
+    private double maxWidth;
+    private double prefWidth;
 
     private class RowCell {
 
@@ -70,84 +28,164 @@ public class RowLayoutPane extends Pane {
 
         RowCell() {}
 
-        public void setWidget(Widget w) {
+        void setWidget(Widget w, Position p) {
+            w.setPosition(p);
             this.widget = w;
         }
 
-        public void draw(GraphicsContext gc) {
-            gc.setFill(Color.WHITE);
-            gc.strokeOval(0, widget.getLayoutHeight(), widget.getWidth(), widget.getHeight());
+        void draw(GraphicsContext gc) {
+            gc.setLineWidth(2);
+            gc.setStroke(Color.WHITE);
+            gc.strokeOval(widget.getLayoutX() + 2, 0, widget.getWidth() - 2, height);
+            gc.setLineWidth(1);
+            String string = "";
+            gc.setStroke(Color.BLACK);
+            string += "minWidth: " + stringifyDouble(minWidth) + "\n" + "prefWidth: " + stringifyDouble(prefWidth) + "\n" +
+                    "maxWidth: " + stringifyDouble(maxWidth) + "\n" + "width: " + stringifyDouble(width) + "\n";
+            gc.strokeText(string, 0, 20);
             widget.draw(gc);
         }
 
-        public void positionWidgetVertical() {
+        void positionWidgetVertical(Position p) {
             //  sets the vertical position and height of the widget, given its positioning constraint
-            if (widget.getPosition().equals("TOP")) {
-                widget.setLayoutHeight(0);
+            if (p.equals(Position.TOP)) {
+                widget.setLayoutY(0);
             }
-            else if (widget.getPosition().equals("CENTER")) {
-                widget.setLayoutHeight(widget.getHeight() / 2);
+            else if (p.equals(Position.CENTER)) {
+                widget.setLayoutY((canvas.getHeight() / 2) - widget.getHeight() / 2);
             }
             else {
-                widget.setLayoutHeight(0);
+                widget.setLayoutY(0);
+                widget.setMinSize(widget.getMinWidth(), canvas.getHeight());
+                widget.setPrefSize(widget.getPrefWidth(), canvas.getHeight());
+                widget.setMaxSize(widget.getMaxWidth(), canvas.getHeight());
+                widget.setHeight(canvas.getHeight());
             }
-
+            widget.setPosition(p);
         }
+    }
+
+    RowLayoutPane(double width, double height) {
+        widgetsList = new ArrayList<>();
+        rowCells = new ArrayList<>();
+        canvas = new Canvas(width, height);
+        this.height = height;
+        setWidth(width);
+    }
+
+    Canvas getCanvas() {
+        layoutChildren();
+        drawRow();
+        return canvas;
+    }
+
+    @Override
+    public void setWidth(double width) {
+        this.width = width;
+        canvas.resize(width, height);
+    }
+
+    @Override
+    public void setHeight(double height) {
+        this.height = height;
+        canvas.resize(width, height);
+    }
+
+    void addWidget(Widget w, Position p) {
+        RowCell rowCell = new RowCell();
+        rowCell.setWidget(w, p);
+        setVerticalPosition(w, p);
+        rowCell.positionWidgetVertical(p);
+        widgetsList.add(w);
+        rowCells.add(rowCell);
+    }
+
+    private void setVerticalPosition(Widget w, Position position) {
+        // sets the given widget’s vertical position as TOP, CENTER, or FILL
+        w.setPosition(position);
+    }
+
+    private void drawRow() {
+        //draws the current layout to the canvas. This method should also draw text to show the min, pref, max, and actual
+        //width of the RowLayoutPane (note: the first three are based on the widths of the child widgets in the RowLayoutPane)
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        gc.setFill(Color.DIMGREY);
+        gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        int currX = 0;
+        for (RowCell r : rowCells) {
+            r.widget.setLayoutX(currX);
+            currX += r.widget.getWidth();
+            r.draw(gc);
+        }
+    }
+
+    private double[] getWidgetWidths() {
+        double minWidth = 0;
+        double maxWidth = 0;
+        double prefWidth = 0;
+        for (Widget w : widgetsList) {
+            minWidth += w.getMinWidth();
+            maxWidth += w.getMaxWidth();
+            prefWidth += w.getPrefWidth();
+        }
+        return new double[] {minWidth, maxWidth, prefWidth};
     }
 
     @Override
     public void layoutChildren() {
-        for(Widget w : widgetsList) {
-            Rectangle rect = new Rectangle();
-            // fill rect
-            doLayout(w, rect);
+        setWidth(canvas.getWidth());
+        double[] widgetWidths = getWidgetWidths();
+        minWidth = widgetWidths[0];
+        maxWidth = widgetWidths[1];
+        prefWidth = widgetWidths[2];
+        double width = canvas.getWidth();
+        double leftOverWidth = width;
+        int r = 0;
+        boolean greedy = false;
+        while(r < rowCells.size() && leftOverWidth > 0) {
+            RowCell cell = rowCells.get(r);
+            Widget w = cell.widget;
+            r++;
+            if (width < minWidth) {
+                w.setWidth(w.getMinWidth());
+            }
+            else {
+                if (greedy) {
+                    double spacePerWidget = leftOverWidth / widgetsList.size();
+                    w.setWidth(Math.min(w.getMaxWidth(), w.getWidth() + spacePerWidget));
+                } else {
+                    if (leftOverWidth < w.getMinWidth()) {
+                        w.setWidth(w.getMinWidth());
+                        leftOverWidth -= w.getMinWidth();
+                    }
+                    if (leftOverWidth > 0 && leftOverWidth < w.getPrefWidth()) {
+                        w.setWidth(leftOverWidth);
+                        leftOverWidth = 0;
+                    }
+                    if (leftOverWidth >= w.getPrefWidth()) {
+                        w.setWidth(w.getPrefWidth());
+                        leftOverWidth -= w.getPrefWidth();
+                    }
+                }
+            }
+
+            if (r == rowCells.size() && leftOverWidth > 0) {
+                if (greedy) {
+                    break;
+                }
+                r = 0;
+                greedy = true;
+            }
+            if (w.getPosition() == Position.FILL) {
+                w.setHeight(canvas.getHeight());
+            }
         }
     }
 
-        public void doLayout(Widget w, Rectangle newBounds) {
-            Dimension min = w.getMinSize();
-            Dimension desired = w.getDesiredSize();
-            Dimension max = w.getMaxSize();
-
-            if (min.width >= newBounds.getWidth()) {
-                // give all children their minimum and let them be clipped
-                int childLeft = newBounds.;
-                foreach(child widget C) {
-                    Rectangle childBounds = new Rectangle();
-                    childBounds.top = newBounds.top;
-                    childBounds.height = newBounds.height;
-                    childBounds.left = childLeft;
-                    childBounds.width = C.getMinSize().width;
-                    childLeft += childBounds.width;
-                    C.dolayout(childBounds);
-                }
-            }
-            else if (desired.width >= newBounds.width) {
-                //give min to all and porportional on what is available for desired
-                int desiredMargin = desired.width - min.width;
-                float fraction = (float) (newBounds.width - min.width) / desiredMargin;
-                int childLeft = newBounds.left;
-                foreach(child widget C) {
-                    Rectangle childBounds = new Rectangle();
-                    childBounds.top = newBounds.top;
-                    childBounds.height = newBounds.height;
-                    childBounds.left = childLeft;
-                    int minWidth = C.getMinSize().width;
-                    int desWidth = C.getDesiredSize().width;
-                    childBounds.width = Math.round(minWidth + (desWidth - minWidth) * fraction);
-                    childLeft += childBounds.width;
-                    C.dolayout(childBounds);
-                }
-            }
-            else {
-                //allocate what remains based on maximum widths
-                int maxMargin = max.width - desired.width;
-                float fraction = (float) (newBounds.width - desired.width) / maxMargin;
-                int childLeft = newBounds.left;
-                foreach(child widget C) {
-                    // similar code to previous case
-                }
-            }
-        }
-
+    private String stringifyDouble(double val) {
+        NumberFormat nf = NumberFormat.getInstance();
+        nf.setMaximumFractionDigits(2);
+        nf.setMinimumFractionDigits(2);
+        return nf.format(val);
+    }
 }

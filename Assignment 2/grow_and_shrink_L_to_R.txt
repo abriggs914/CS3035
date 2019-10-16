@@ -1,0 +1,91 @@
+
+////                        System.out.println("GREEDY widget: " + (r - 1));
+////                        System.out.println("BEFORE\tGW.w: " + w.getWidth() + ", GW.mw: " + w.getMaxWidth());
+//                        if ((leftOverWidth + w.getWidth()) >= w.getMaxWidth()) {
+////                            System.out.println("A");
+//                            w.setWidth(w.getMaxWidth());
+//                            leftOverWidth -= (w.getMaxWidth() - w.getPrefWidth());
+//                        }
+//                        else if (w.getWidth() < w.getMaxWidth()) {
+////                            System.out.println("B");
+//                            w.setWidth(w.getWidth() + leftOverWidth);
+//                            leftOverWidth -= w.getWidth();
+//                        }
+////                        System.out.println("AFTER\tGW.w: " + w.getWidth() + ", GW.mw: " + w.getMaxWidth());0
+
+
+
+
+
+    @Override
+    public void layoutChildren() {
+        setWidth(canvas.getWidth());
+        double[] widgetWidths = getWidgetWidths();
+        minWidth = widgetWidths[0];
+        maxWidth = widgetWidths[1];
+        prefWidth = widgetWidths[2];
+//        System.out.println("LAYOUTCHILDREN");
+        double width = canvas.getWidth();
+        double leftOverWidth = width;
+        int r = 0;
+        boolean greedy = false;
+        while(r < rowCells.size() && leftOverWidth > 0) {
+            System.out.println("-- V --");
+            RowCell cell = rowCells.get(r);
+            Widget w = cell.widget;
+            r++;
+            System.out.println("leftOverWidth: " + leftOverWidth + ", r: " + (r - 1));
+                if (greedy) {
+                    double spacePerWidget = leftOverWidth / widgetsList.size();
+                    System.out.println("GREEDY widget: " + (r - 1) + ", spacePerWidget: " + spacePerWidget);
+                    w.setWidth(Math.min(w.getMaxWidth(), w.getWidth() + spacePerWidget));
+                }
+                else {
+                    if (leftOverWidth < w.getMinWidth()) {
+                        w.setWidth(w.getMinWidth());
+                        leftOverWidth -= w.getMinWidth();
+                    }
+                    if (leftOverWidth > 0 && leftOverWidth < w.getPrefWidth()) {
+                        w.setWidth(leftOverWidth);
+                        leftOverWidth = 0;
+                    }
+                    if (leftOverWidth >= w.getPrefWidth()) {
+                        w.setWidth(w.getPrefWidth());
+                        leftOverWidth -= w.getPrefWidth();
+                    }
+//                    double spacePerWidget = Math.max(w.getMinWidth(), leftOverWidth / (widgetsList.size() - (r - 1)));
+//                    System.out.println("widget: " + (r - 1) + ", spacePerWidget: " + spacePerWidget);
+//                    if (spacePerWidget <= w.getMinWidth()) {
+//                        System.out.println("A");
+//                        w.setWidth(w.getMinWidth());
+//                        leftOverWidth -= w.getMinWidth();
+//                    }
+//                    if (spacePerWidget > w.getMinWidth() && spacePerWidget < w.getPrefWidth()) {
+//                        System.out.println("B");
+//                        w.setWidth(spacePerWidget);
+//                        leftOverWidth -= spacePerWidget;
+//                    }
+//                    if (spacePerWidget >= w.getPrefWidth()) {
+//                        System.out.println("C");
+//                        w.setWidth(w.getPrefWidth());
+//                        leftOverWidth -= w.getPrefWidth();
+//                    }
+//                    w.setWidth(Math.max(w.getMinWidth(), Math.min(w.getPrefWidth(), w.getWidth() + spacePerWidget)));
+                }
+
+            if (r == rowCells.size() && leftOverWidth > 0) {
+//                System.out.println("RESET");
+                if (greedy) { //&& r == rowCells.size()
+//                    System.out.println("BREAK");
+                    break;
+                }
+                r = 0;
+                greedy = true;
+            }
+
+            if (w.getPosition() == Position.FILL) {
+                w.setHeight(canvas.getHeight());
+            }
+        }
+//        System.out.println("W:\t" + width + "\tH:\t" + height);
+    }

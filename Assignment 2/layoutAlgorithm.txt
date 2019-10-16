@@ -1,0 +1,70 @@
+public class HorizontalStack {
+	public Dimension getMinSize() {
+		int minWidth = 0;
+		int minHeight = 0'
+		foreach child widget C {
+			Dimension childSize = C.getMinSize();
+			minWidth += childSize.width;
+			if (minHeight < childSize.height) {
+				minHeight = childSize.height;
+			}
+		}
+		return new Dimension(minWidth, minHeight);
+	}
+}
+
+public Dimension getDesiredSize() {
+	// similar to getMinSize using C.getDesiredSize();
+}
+
+public Dimension getMaxSize() {
+	// similar to getMinSize using C.getMaxSize()
+}
+
+
+public void dolayout(Rectangle newBounds) {
+	Dimensionmin = getMinSize();
+	Dimension desired = getDesiredSize();
+	Dimension max = getMaxSize();
+
+	if (min.width >= newBounds.width) {
+		// give all children their minimum and let them be clipped
+		int childLeft = newBounds.left;
+		foreach(child widget C) {
+			Rectangle childBounds = new Rectangle();
+			childBounds.top = newBounds.top;
+			childBounds.height = newBounds.height;
+			childBounds.left = childLeft;
+			childBounds.width = C.getMinSize().width;
+			childLeft += childBounds.width;
+			C.dolayout(childBounds);
+		}
+	}
+	else if (desired.width >= newBounds.width) {
+		//give min to all and porportional on what is available for desired
+		int desiredMargin = desired.width - min.width;
+		float fraction = (float) (newBounds.width - min.width) / desiredMargin;
+		int childLeft = newBounds.left;
+		foreach(child widget C) {
+			Rectangle childBounds = new Rectangle();
+			childBounds.top = newBounds.top;
+			childBounds.height = newBounds.height;
+			childBounds.left = childLeft;
+			int minWidth = C.getMinSize().width;
+			int desWidth = C.getDesiredSize().width;
+			childBounds.width = minWidth + (desWidth - minWidth) * fraction;
+			childLeft += childBounds.width;
+			C.dolayout(childBounds);
+		}
+	}
+	else {
+		//allocate what remains based on maximum widths
+		int maxMargin = max.width - desired.width;
+		float fraction = (float) (newBounds.width - desired.width) / maxMargin;
+		int childLeft = newBounds.left;
+		foreach(child widget C) {
+			// similar code to previous case
+		}
+	}
+}
+

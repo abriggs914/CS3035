@@ -2,7 +2,6 @@ package sample;
 
 import javafx.application.Application;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Label;
@@ -10,10 +9,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.MenuBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -24,7 +21,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         // Main background.
         BorderPane borderPane = new BorderPane();
-        double windowWidth = 890;
+        double windowWidth = 1100;
         double windowHeight = 550;
 
         // Menu bar with 3 buttons and 10 items each.
@@ -74,17 +71,29 @@ public class Main extends Application {
         rightWidget.setPrefSize(200,200);
         rightWidget.setMinSize(100,200);
         rightWidget.setMaxSize(300,300);
-        rowLayoutPane.addWidget(leftWidget);
-        rowLayoutPane.addWidget(centerWidget);
-        rowLayoutPane.addWidget(rightWidget);
+        rowLayoutPane.addWidget(leftWidget, RowLayoutPane.Position.CENTER);
+        rowLayoutPane.addWidget(centerWidget, RowLayoutPane.Position.FILL);
+        rowLayoutPane.addWidget(rightWidget, RowLayoutPane.Position.TOP);
         Canvas canvas = rowLayoutPane.getCanvas();
-        StackPane pane = new StackPane();
-        pane.getChildren().add(canvas);
         borderPane.setCenter(canvas);
+
+        borderPane.widthProperty().addListener((obs, oldVal, newVal) -> {
+            canvas.setWidth((double) newVal - right.getPrefWidth() - left.getPrefWidth());
+            borderPane.getChildren().remove(canvas);
+            borderPane.setCenter(rowLayoutPane.getCanvas());
+        });
+
+        borderPane.heightProperty().addListener((obs, oldVal, newVal) -> {
+            rowLayoutPane.setHeight((double) newVal - top.getPrefHeight() - bottom.getPrefHeight());
+            canvas.setHeight((double) newVal - top.getPrefHeight() - bottom.getPrefHeight());
+            borderPane.getChildren().remove(canvas);
+            borderPane.setCenter(rowLayoutPane.getCanvas());
+        });
 
         // Listener for colour list selection.
         right.getSelectionModel().selectedItemProperty().addListener((ov, oldValue, newValue) -> bottom.setText(newValue));
 
+        primaryStage.sizeToScene();
         primaryStage.setTitle("CS3035 Assignment 2 - part 2");
         primaryStage.setScene(new Scene(borderPane, windowWidth, windowHeight));
         primaryStage.show();
