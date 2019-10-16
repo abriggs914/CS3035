@@ -9,10 +9,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Ellipse;
-import javafx.scene.shape.Line;
-import javafx.scene.shape.StrokeType;
+import javafx.scene.shape.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 
@@ -20,6 +17,7 @@ import java.util.ArrayList;
 
 public class GraphView extends Pane {
 
+    final boolean PRINT = false;
     Line workingEdge;
 
     public static final Color FILL_COLOR = Color.LIGHTBLUE;
@@ -31,6 +29,7 @@ public class GraphView extends Pane {
         Main.graphModel.vertexListProperty().addListener(new ListChangeListener<Vertex>() {
             @Override
             public void onChanged(javafx.collections.ListChangeListener.Change<? extends Vertex> v) {
+                if (PRINT) {System.out.println("vertexList UPDATED\t->\tdraw()");}
                 draw();
             }
         });
@@ -53,8 +52,10 @@ public class GraphView extends Pane {
         Vertex b = Main.graphModel.getVertexAt(x2, y2);
         if (b == null) {
             workingEdge = edgeLine;
-            System.out.println("Setting workingEdge: " + workingEdge);
-            System.out.println("Drawing line: (" + x1 + ", " + y1 + "), to (" + x2 + ", " + y2 + ")");
+            if (PRINT) {
+                System.out.println("Setting workingEdge: " + workingEdge);
+                System.out.println("Drawing line: (" + x1 + ", " + y1 + "), to (" + x2 + ", " + y2 + ")");
+            }
         }
         else {
             workingEdge = null;
@@ -76,49 +77,52 @@ public class GraphView extends Pane {
     public void layoutChildren() {
         draw();
     }
+
     private void draw() {
+        if (PRINT) {System.out.println("\tv - DRAWING - v");}
         this.getChildren().clear();
-        Canvas canvas = new Canvas();
-        GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.setStroke(Color.BLACK);
+//        Canvas canvas = new Canvas();
+//        GraphicsContext gc = canvas.getGraphicsContext2D();
+//        gc.setStroke(Color.BLACK);
         if (workingEdge != null) {
             int x1 = (int) workingEdge.getStartX();
             int y1 = (int) workingEdge.getStartY();
             int x2 = (int) workingEdge.getEndX();
             int y2 = (int) workingEdge.getEndY();
-            gc.setLineWidth(3);
-            gc.strokeLine(x1, y1, x2, y2);
-//            this.getChildren().add(drawEdge(x1, y1, x2, y2));
+            this.getChildren().add(drawEdge(x1, y1, x2, y2));
         }
+        if (PRINT) {System.out.println("Num edges: " + Main.graphModel.getEdges().size());}
         for (Edge e : Main.graphModel.getEdges()) {
-            System.out.println("Drawing Edge: " + e);
+//            System.out.println("Drawing Edge: " + e);
             Point2D start = e.getStartPosition();
             Point2D end = e.getEndPosition();
             int x1 = (int) start.getX();
             int y1 = (int) start.getY();
             int x2 = (int) end.getX();
             int y2 = (int) end.getY();
-            gc.setLineWidth(1);
-            gc.strokeLine(x1, y1, x2, y2);
-//            this.getChildren().add(drawEdge(x1, y1, x2, y2));
+            this.getChildren().add(drawEdge(x1, y1, x2, y2));
         }
+        if (PRINT) {System.out.println("Num vertexes: " + Main.graphModel.vertexListProperty().size());}
         for (Vertex v : Main.graphModel.vertexListProperty()) {
-//            Circle c = new Circle(
-//                    v.getPosition().getX(),
-//                    v.getPosition().getY(),
-//                    v.getRadius()
-//            );
+            Circle c = new Circle(
+                    v.getPosition().getX(),
+                    v.getPosition().getY(),
+                    v.getRadius()
+            );
             if (v.getIsSelected()) {
-                gc.setLineWidth(3);
-                gc.setFill(SELECTED_COLOR);
+//                c.setStrokeWidth(3);
+                c.setFill(SELECTED_COLOR);
+//                c.setStyle("-fx-border-style: solid inside;" +
+//                        "-fx-border-width: 3;");
+//                c.setStrokeType(StrokeType.OUTSIDE);
+//                c.setStrokeLineJoin(StrokeLineJoin.ROUND);
 //                c.setStrokeType(StrokeType.INSIDE);
             }
             else {
-                gc.setFill(FILL_COLOR);
-                gc.setLineWidth(1);
+                c.setFill(FILL_COLOR);
+                c.setStrokeWidth(1);
             }
-            gc.fillOval(v.getPosition().getX(), v.getPosition().getY(), v.getRadius(), v.getRadius());
-//            System.out.println("drawing circle: " + c);
+            if (PRINT) {System.out.println("drawing circle: [" + v.getId() + "] " + c + "\n\tstrokeWidth: " + c.getStrokeWidth());}
             Label label = new Label(Integer.toString(v.getId()));
             label.setMinSize(40, 20);
             label.setFont(new Font("times", 18));
@@ -128,9 +132,10 @@ public class GraphView extends Pane {
             StackPane stackPane = new StackPane();
             stackPane.setLayoutX(v.getPosition().getX());
             stackPane.setLayoutY(v.getPosition().getY());
-            stackPane.getChildren().add(canvas);
+            stackPane.getChildren().add(c);
             stackPane.getChildren().add(label);
             this.getChildren().add(stackPane);
         }
+        if (PRINT) {System.out.println("\t^ - DRAWING - ^\n");}
     }
 }

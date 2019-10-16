@@ -38,30 +38,33 @@ public class GraphViewController {
                 Main.graphView.layoutChildren();
             }
         });
-
         Main.graphView.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
+                System.out.println("\tMOUSE PRESSED");
                 int xPos = (int) e.getX();
                 int yPos = (int) e.getY();
                 Vertex selected = Main.graphModel.getVertexAt(xPos, yPos);
                 if (e.isSecondaryButtonDown() && !e.isPrimaryButtonDown()) {
+                    System.out.println("\t\tRight click\t->\tdelete vertex");
                     Main.graphModel.deleteVertexAt(xPos, yPos);
                 }
                 // add edge
                 else if (e.isShiftDown()) {
                     dragOver = false;
-                    System.out.println("shift is pressed");
+                    System.out.println("\t\tshift pressed\t->\tadd edge");
                     connectingVertex = selected;
                     shiftIsPressed = true;
                 }
                 // move vertex
                 else if (selected != null) {
 //                    selected.select();
+                    System.out.println("\t\tDrag click\t->\tmove vertex");
                     movingVertex = selected;
                 }
                 // add node
                 else if (e.getButton() == MouseButton.PRIMARY){
+                    System.out.println("\t\tLeft click\t->\tadd vertex");
                     Main.graphModel.addVertex(xPos, yPos);
                 }
             }
@@ -70,6 +73,7 @@ public class GraphViewController {
         Main.graphView.setOnMouseReleased(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
+                System.out.println("\tMOUSE RELEASED");
                 Main.graphView.resetWorkingEdge();
                 if (movingVertex != null) {
                     movingVertex.deselect();

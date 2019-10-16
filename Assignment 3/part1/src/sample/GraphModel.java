@@ -12,7 +12,7 @@ public class GraphModel {
     private SimpleListProperty<Vertex> vertexListProperty;
     private ArrayList<Edge> edges;
     private int vertexRadius;
-    private int numVerticies;
+    private int namVertices;
 
     public GraphModel(int vertexRadius) {
         ArrayList<Vertex> list = new ArrayList<Vertex>();
@@ -20,7 +20,7 @@ public class GraphModel {
         vertexListProperty = new SimpleListProperty<Vertex>(observableList);
 
         this.edges = new ArrayList<>();
-        this.numVerticies = 1;
+        this.namVertices = 1;
         this.vertexRadius = vertexRadius;
     }
 
@@ -31,7 +31,7 @@ public class GraphModel {
     public int getVertexRadius() {return vertexRadius;}
 
     public void addVertex(int x, int y) {
-        Vertex newVertex = new Vertex(numVerticies++, x, y, vertexRadius);
+        Vertex newVertex = new Vertex(namVertices++, x, y, vertexRadius);
         System.out.println("newVertex: " + newVertex);
         vertexListProperty.add(newVertex);
     }
@@ -40,8 +40,8 @@ public class GraphModel {
         Vertex delVertex = getVertexAt(x, y);
         System.out.println("delVertex: " + delVertex);
         vertexListProperty.remove(delVertex);
-        numVerticies--;
-        numVerticies = Math.min(maxID(), numVerticies) + 1;
+        namVertices--;
+        namVertices = Math.min(maxID(), namVertices) + 1;
     }
 
     public int maxID() {
