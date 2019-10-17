@@ -2,13 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/part1/sample/GraphView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/part1/sample/GraphView$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/part1/sample/GraphView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/part1/sample/GraphView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/part1/sample/GraphViewController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/part1/sample/GraphViewController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/part1/sample/GraphViewController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/part1/sample/GraphViewController$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/part1/sample/GraphViewController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/part1/sample/GraphViewController$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/part1/sample/GraphViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/part1/sample/GraphViewController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/GraphModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GraphModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/GraphView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GraphView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/GraphViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GraphViewController.java" afterDir="false" />
@@ -88,11 +81,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/GraphModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="36" column="5" lean-forward="true" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+            <state relative-caret-position="229">
+              <caret line="38" column="24" lean-forward="true" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#481#489#0" expanded="true" />
+                <element signature="e#2377#2378#0" expanded="true" />
+                <element signature="e#3253#3254#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -132,12 +127,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/GraphView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1742">
-              <caret line="138" column="63" selection-start-line="138" selection-start-column="63" selection-end-line="138" selection-end-column="63" />
+            <state relative-caret-position="170">
+              <caret line="19" column="21" lean-forward="true" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2327#2328#0" expanded="true" />
-                <element signature="e#2580#2581#0" expanded="true" />
+                <element signature="e#2516#2517#0" expanded="true" />
+                <element signature="e#2769#2770#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -146,8 +141,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/GraphViewController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="70" column="11" selection-start-line="70" selection-start-column="11" selection-end-line="70" selection-end-column="11" />
+            <state relative-caret-position="127">
+              <caret line="85" column="50" lean-forward="true" selection-start-line="85" selection-start-column="50" selection-end-line="85" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -169,8 +164,9 @@
       <find>Square</find>
       <find>alt</find>
       <find>layout</find>
-      <find>lay</find>
       <find>layoutC</find>
+      <find>lay</find>
+      <find>resetWorkingEdge</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -188,9 +184,9 @@
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/sample/Vertex.java" />
         <option value="$PROJECT_DIR$/src/sample/Edge.java" />
-        <option value="$PROJECT_DIR$/src/sample/GraphModel.java" />
-        <option value="$PROJECT_DIR$/src/sample/GraphView.java" />
         <option value="$PROJECT_DIR$/src/sample/GraphViewController.java" />
+        <option value="$PROJECT_DIR$/src/sample/GraphView.java" />
+        <option value="$PROJECT_DIR$/src/sample/GraphModel.java" />
       </list>
     </option>
   </component>
@@ -449,13 +445,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Edge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-213">
-          <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Vertex.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-672">
@@ -476,33 +465,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/GraphModel.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/Edge.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="36" column="5" lean-forward="true" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#481#489#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-213">
+          <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/GraphView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1742">
-          <caret line="138" column="63" selection-start-line="138" selection-start-column="63" selection-end-line="138" selection-end-column="63" />
+        <state relative-caret-position="170">
+          <caret line="19" column="21" lean-forward="true" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2327#2328#0" expanded="true" />
-            <element signature="e#2580#2581#0" expanded="true" />
+            <element signature="e#2516#2517#0" expanded="true" />
+            <element signature="e#2769#2770#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/GraphModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="38" column="24" lean-forward="true" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#481#489#0" expanded="true" />
+            <element signature="e#2377#2378#0" expanded="true" />
+            <element signature="e#3253#3254#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/GraphViewController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="70" column="11" selection-start-line="70" selection-start-column="11" selection-end-line="70" selection-end-column="11" />
+        <state relative-caret-position="127">
+          <caret line="85" column="50" lean-forward="true" selection-start-line="85" selection-start-column="50" selection-end-line="85" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

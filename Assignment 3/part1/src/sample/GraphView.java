@@ -13,7 +13,7 @@ import javafx.scene.shape.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class GraphView extends Pane {
 
@@ -36,8 +36,13 @@ public class GraphView extends Pane {
     }
 
     boolean tryDrawingEdge(int x1, int y1, int x2, int y2) {
-        drawEdge(x1, y1, x2, y2);
-        if (workingEdge == null && Main.graphModel.getVertexAt(x1, y1) != Main.graphModel.getVertexAt(x2, y2)) {
+        workingEdge = drawEdge(x1, y1, x2, y2);
+        Vertex a = Main.graphModel.getVertexAt(x1, y1);
+        Vertex b = Main.graphModel.getVertexAt(x2, y2);
+        // current position dragged to, isn't a vertex
+//        System.out.println("b: " + b);
+        if (b != null && a != b) {
+            b.select();
             Main.graphModel.addEdge(x1, y1, x2, y2);
             return true;
         }
@@ -49,17 +54,17 @@ public class GraphView extends Pane {
         edgeLine.setStrokeWidth(3);
         edgeLine.setFill(Color.BLACK);
         edgeLine.setStroke(Color.BLACK);
-        Vertex b = Main.graphModel.getVertexAt(x2, y2);
-        if (b == null) {
-            workingEdge = edgeLine;
-            if (PRINT) {
-                System.out.println("Setting workingEdge: " + workingEdge);
-                System.out.println("Drawing line: (" + x1 + ", " + y1 + "), to (" + x2 + ", " + y2 + ")");
-            }
-        }
-        else {
-            workingEdge = null;
-        }
+//        if (b == null) {
+//            workingEdge = edgeLine;
+////            if (PRINT) {
+//                System.out.println("Setting workingEdge: " + workingEdge);
+//                System.out.println("Drawing line: (" + x1 + ", " + y1 + "), to (" + x2 + ", " + y2 + ")");
+////            }
+//        }
+//        else {
+////            System.out.println("RESETTING WORKINGEDGE");
+//            workingEdge = null;
+//        }
         return edgeLine;
 //        this.getChildren().add(edgeLine);
 //        layoutChildren();
@@ -91,9 +96,12 @@ public class GraphView extends Pane {
             int y2 = (int) workingEdge.getEndY();
             this.getChildren().add(drawEdge(x1, y1, x2, y2));
         }
-        if (PRINT) {System.out.println("Num edges: " + Main.graphModel.getEdges().size());}
-        for (Edge e : Main.graphModel.getEdges()) {
+        if (PRINT) {System.out.println("Num edges: " + Main.graphModel.getEdges().size()); }
+        Set<Map.Entry<String, Edge>> edgeEntries = Main.graphModel.getEdges().entrySet();
+        for (Object o: edgeEntries) {
 //            System.out.println("Drawing Edge: " + e);
+            Map.Entry entry = (Map.Entry) o;
+            Edge e = (Edge) entry.getValue();
             Point2D start = e.getStartPosition();
             Point2D end = e.getEndPosition();
             int x1 = (int) start.getX();

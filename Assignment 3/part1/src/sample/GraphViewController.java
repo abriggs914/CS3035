@@ -9,6 +9,7 @@ public class GraphViewController {
 
     Vertex movingVertex;
     Vertex connectingVertex;
+    Vertex connectedVertex;
     boolean shiftIsPressed;
     boolean dragOver;
 
@@ -18,15 +19,16 @@ public class GraphViewController {
             public void handle(MouseEvent e) {
                 int xPos = (int) e.getX();
                 int yPos = (int) e.getY();
-                if (shiftIsPressed && !dragOver) {
+                if (shiftIsPressed && !dragOver && connectingVertex != null) {
                     Point2D vPos = connectingVertex.getPosition();
                     connectingVertex.select();
+                    connectedVertex = Main.graphModel.getVertexAt(xPos, yPos);
                     if (Main.graphView.tryDrawingEdge((int) vPos.getX(), (int) vPos.getY(), xPos, yPos)) {
                         System.out.println("drag over");
                         dragOver = true;
                         return;
                     }
-                    System.out.println("dragging");
+//                    System.out.println("dragging");
                 }
                 else {
                     if (movingVertex != null) {
@@ -52,15 +54,15 @@ public class GraphViewController {
                 // add edge
                 else if (e.isShiftDown()) {
                     dragOver = false;
-                    System.out.println("\t\tshift pressed\t->\tadd edge");
                     connectingVertex = selected;
                     shiftIsPressed = true;
+                    System.out.println("\t\tshift pressed\t->\tadd edge\n\t\tConnectingVertex: " + connectingVertex);
                 }
                 // move vertex
                 else if (selected != null) {
 //                    selected.select();
-                    System.out.println("\t\tDrag click\t->\tmove vertex");
                     movingVertex = selected;
+                    System.out.println("\t\tDrag click\t->\tmove vertex\n\t\tMovingVertex: " + movingVertex);
                 }
                 // add node
                 else if (e.getButton() == MouseButton.PRIMARY){
@@ -74,7 +76,6 @@ public class GraphViewController {
             @Override
             public void handle(MouseEvent e) {
                 System.out.println("\tMOUSE RELEASED");
-                Main.graphView.resetWorkingEdge();
                 if (movingVertex != null) {
                     movingVertex.deselect();
                     Main.graphView.layoutChildren();
@@ -82,11 +83,15 @@ public class GraphViewController {
                 if (connectingVertex != null) {
                     connectingVertex.deselect();
                     Main.graphView.layoutChildren();
+                    if (connectedVertex != null) {
+                        connectedVertex.deselect();
+                    }
                 }
                 movingVertex = null;
                 connectingVertex = null;
                 shiftIsPressed = false;
                 dragOver = true;
+                Main.graphView.resetWorkingEdge();
             }
         });
     }
