@@ -43,13 +43,8 @@ public class GraphView extends Pane {
 
     private Line drawEdge(int x1, int y1, int x2, int y2) {
         Line edgeLine = new Line(x1, y1, x2, y2);
-        Vertex b = Main.graphModel.getVertexAt(x2, y2);
-		if (b == null) {
-			edgeLine.setStrokeWidth(3);
-		}
-		else {
-		    edgeLine.setStrokeWidth(1);
-        }
+        edgeLine.setStrokeWidth(3);
+        edgeLine.setFill(Color.BLACK);
         edgeLine.setStroke(Color.BLACK);
         return edgeLine;
     }

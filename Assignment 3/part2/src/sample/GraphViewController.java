@@ -3,7 +3,7 @@ package sample;
 import javafx.geometry.Point2D;
 import javafx.scene.input.MouseButton;
 
-class GraphViewController {
+public class GraphViewController {
 
     private Vertex movingVertex;
     private Vertex connectingVertex;

@@ -1,10 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="part1:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/part1_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../part2/src/sample/Edge.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../part2/src/sample/GraphModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../part2/src/sample/GraphView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../part2/src/sample/GraphViewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../part2/src/sample/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../part2/src/sample/Vertex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/part1/sample/Edge.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/part1/sample/Edge.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/part1/sample/GraphModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/part1/sample/GraphModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/part1/sample/GraphView$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/part1/sample/GraphView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/part1/sample/GraphView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/part1/sample/GraphViewController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/part1/sample/GraphViewController$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/part1/sample/GraphViewController$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/part1/sample/GraphViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/part1/sample/GraphViewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/part1/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/part1/sample/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/part1/sample/Vertex.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/part1/sample/Vertex.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Edge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Edge.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/GraphModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GraphModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/GraphView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GraphView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/GraphViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GraphViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Vertex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Vertex.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -67,12 +94,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-145">
-              <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+            <state relative-caret-position="510">
+              <caret line="32" column="70" selection-start-line="32" selection-start-column="70" selection-end-line="32" selection-end-column="70" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1016#1017#0" expanded="true" />
-                <element signature="e#1044#1045#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -81,13 +106,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/GraphModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="38" column="24" lean-forward="true" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
+            <state relative-caret-position="51">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#481#489#0" expanded="true" />
-                <element signature="e#2377#2378#0" expanded="true" />
-                <element signature="e#3253#3254#0" expanded="true" />
+                <element signature="e#1988#1989#0" expanded="true" />
+                <element signature="e#2016#2017#0" expanded="true" />
+                <element signature="e#2792#2793#0" expanded="true" />
+                <element signature="e#2842#2843#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -96,20 +121,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Vertex.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-672">
-              <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+            <state relative-caret-position="918">
+              <caret line="83" column="1" selection-start-line="83" selection-start-column="1" selection-end-line="83" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#442#443#0" expanded="true" />
-                <element signature="e#466#467#0" expanded="true" />
-                <element signature="e#491#492#0" expanded="true" />
-                <element signature="e#515#516#0" expanded="true" />
-                <element signature="e#546#547#0" expanded="true" />
-                <element signature="e#572#573#0" expanded="true" />
-                <element signature="e#603#604#0" expanded="true" />
-                <element signature="e#629#630#0" expanded="true" />
-                <element signature="e#804#805#0" expanded="true" />
-                <element signature="e#842#843#0" expanded="true" />
+                <element signature="e#1322#1323#0" expanded="true" />
+                <element signature="e#1357#1358#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -118,31 +135,31 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Edge.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-213">
-              <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/GraphView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="19" column="21" lean-forward="true" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2516#2517#0" expanded="true" />
-                <element signature="e#2769#2770#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="578">
+              <caret line="46" selection-start-line="46" selection-end-line="46" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/sample/GraphView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="52" column="40" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1703#1704#0" expanded="true" />
+                <element signature="e#1775#1776#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/GraphViewController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="85" column="50" lean-forward="true" selection-start-line="85" selection-start-column="50" selection-end-line="85" selection-end-column="50" />
+            <state relative-caret-position="204">
+              <caret line="57" column="13" lean-forward="true" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -165,8 +182,10 @@
       <find>alt</find>
       <find>layout</find>
       <find>layoutC</find>
-      <find>lay</find>
       <find>resetWorkingEdge</find>
+      <find>select</find>
+      <find>sele</find>
+      <find>lay</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -181,12 +200,12 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/sample/sample.fxml" />
-        <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/sample/Vertex.java" />
         <option value="$PROJECT_DIR$/src/sample/Edge.java" />
+        <option value="$PROJECT_DIR$/src/sample/Main.java" />
+        <option value="$PROJECT_DIR$/src/sample/GraphModel.java" />
         <option value="$PROJECT_DIR$/src/sample/GraphViewController.java" />
         <option value="$PROJECT_DIR$/src/sample/GraphView.java" />
-        <option value="$PROJECT_DIR$/src/sample/GraphModel.java" />
       </list>
     </option>
   </component>
@@ -206,7 +225,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -229,6 +247,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -243,6 +262,10 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dynamic.classpath" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/sample/Vertex.java" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
   </component>
   <component name="RunDashboard">
@@ -351,7 +374,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" weight="0.2730711" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.27760968" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -360,7 +383,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3289689" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3289689" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -435,77 +458,140 @@
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml" />
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-145">
-          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+        <state relative-caret-position="510">
+          <caret line="32" column="70" selection-start-line="32" selection-start-column="70" selection-end-line="32" selection-end-column="70" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1016#1017#0" expanded="true" />
-            <element signature="e#1044#1045#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Vertex.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-672">
-          <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#442#443#0" expanded="true" />
-            <element signature="e#466#467#0" expanded="true" />
-            <element signature="e#491#492#0" expanded="true" />
-            <element signature="e#515#516#0" expanded="true" />
-            <element signature="e#546#547#0" expanded="true" />
-            <element signature="e#572#573#0" expanded="true" />
-            <element signature="e#603#604#0" expanded="true" />
-            <element signature="e#629#630#0" expanded="true" />
-            <element signature="e#804#805#0" expanded="true" />
-            <element signature="e#842#843#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Edge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-213">
-          <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/GraphView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="19" column="21" lean-forward="true" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2516#2517#0" expanded="true" />
-            <element signature="e#2769#2770#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/GraphModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="38" column="24" lean-forward="true" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+          <folding>
+            <element signature="e#1988#1989#0" expanded="true" />
+            <element signature="e#2016#2017#0" expanded="true" />
+            <element signature="e#2792#2793#0" expanded="true" />
+            <element signature="e#2842#2843#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Vertex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="918">
+          <caret line="83" column="1" selection-start-line="83" selection-start-column="1" selection-end-line="83" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#481#489#0" expanded="true" />
-            <element signature="e#2377#2378#0" expanded="true" />
-            <element signature="e#3253#3254#0" expanded="true" />
+            <element signature="e#1322#1323#0" expanded="true" />
+            <element signature="e#1357#1358#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Edge.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/GraphViewController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="85" column="50" lean-forward="true" selection-start-line="85" selection-start-column="50" selection-end-line="85" selection-end-column="50" />
+        <state relative-caret-position="204">
+          <caret line="57" column="13" lean-forward="true" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/GraphView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="52" column="40" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1703#1704#0" expanded="true" />
+            <element signature="e#1775#1776#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>part1:jar</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

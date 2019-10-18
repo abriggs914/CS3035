@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<ToolBar prefHeight="65.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ToolBarController">
+
+   <HBox spacing="40">
+      <HBox spacing="10">
+         <ToggleButton fx:id="redButton" onAction="#colorButtonClicked" style="-fx-background-color:  #ff3333;" text="RED" textFill="white" toggleGroup="$colorGroup">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </ToggleButton>
+
+         <ToggleButton fx:id="greenButton" onAction="#colorButtonClicked" style="-fx-background-color: green;" text="GREEN" textFill="white" toggleGroup="$colorGroup">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </ToggleButton>
+
+         <ToggleButton fx:id="blueButton" onAction="#colorButtonClicked" style="-fx-background-color: blue;" text="BLUE" textFill="white" toggleGroup="$colorGroup">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </ToggleButton>
+         <HBox.margin>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </HBox.margin>
+      </HBox>
+      <HBox spacing="10">
+         <ToggleButton fx:id="createButton" text="create" toggleGroup="actionGroup">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </ToggleButton>
+         <ToggleButton fx:id="deleteButton" text="delete" toggleGroup="$actionGroup">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </ToggleButton>
+         <HBox.margin>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </HBox.margin>
+      </HBox>
+   </HBox>
+</ToolBar>

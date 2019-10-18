@@ -1,8 +1,15 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ToolBar;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+
+import javax.swing.text.AbstractDocument;
 
 /**
  * CS3035 Assignment 3 - part 1
@@ -31,14 +38,25 @@ public class Main extends Application {
 
     private static final int vertexRadius = 25;
     static final GraphModel graphModel = new GraphModel(vertexRadius);
+    static final InteractionModel interactionModel = new InteractionModel();
     static final GraphView graphView = new GraphView();
-    static final GraphViewController graphViewController = new GraphViewController();
+//    static final GraphViewController graphViewController = new GraphViewController();
+//    static final ToolBarController toolBarController = new ToolBarController();
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws Exception{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("toolbar.fxml"));
+//        fxmlLoader.setController(toolBarController);
+        ToolBar toolbar = (ToolBar) fxmlLoader.load();
+
         primaryStage.setTitle("CS3035 Assignment 3 - part 1");
         primaryStage.setResizable(false);
-        primaryStage.setScene(new Scene(graphView, 500, 500));
+        BorderPane borderPane = new BorderPane();
+        borderPane.setTop(toolbar);
+        borderPane.setCenter(graphView);
+
+        Scene scene = new Scene(borderPane, 500, 500);
+        primaryStage.setScene(scene);
         primaryStage.show();
     }
 
