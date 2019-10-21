@@ -31,7 +31,7 @@ class GraphModel {
     }
 
     void addVertex(int x, int y) {
-        Vertex newVertex = new Vertex(numVertices++, x, y, vertexRadius);
+        Vertex newVertex = new Vertex(numVertices++, x, y, vertexRadius, Main.interactionModel.getSelectedColor());
         addVertexAdjMatrix();
         vertexListProperty.add(newVertex);
     }
@@ -39,9 +39,11 @@ class GraphModel {
     void deleteVertexAt(int x, int y) {
         Vertex delVertex = getVertexAt(x, y);
         if (delVertex != null) {
+            int id = delVertex.getId();
             removeEdgesToVertex(delVertex);
             unMarkAdjMatrix(delVertex);
             vertexListProperty.remove(delVertex);
+            reLabelVertices(id);
             numVertices--;
             numVertices = Math.min(maxID(), numVertices) + 1;
         }
@@ -85,9 +87,11 @@ class GraphModel {
                 markAdjacencyMatrix(a, b);
                 Edge e = new Edge(a, b, x1, y1, x2, y2);
                 edges.put(edgeId, e);
-//                System.out.println("Creating edge between:\n\ta:\t" + a + "\n\tb:\t" + b);
+                System.out.println("Creating edge between:\n\ta:\t" + a + "\n\tb:\t" + b);
             }
         }
+        System.out.println("\tADDING EDGE");
+        printAdjMatrix();
     }
 
     private String genEdgeID(Vertex a, Vertex b) {
@@ -127,6 +131,7 @@ class GraphModel {
     private void markAdjacencyMatrix(Vertex a, Vertex b) {
         int aIdx = a.getId() - 1;
         int bIdx = b.getId() - 1;
+        System.out.println("marking: [" + aIdx + ", " + bIdx + "], and [" + bIdx + ", " + aIdx + "]");
         adjacencyMatrix.get(aIdx).set(bIdx, 1);
         adjacencyMatrix.get(bIdx).set(aIdx, 1);
     }
@@ -140,15 +145,19 @@ class GraphModel {
         }
         adjacencyMatrix.get(vIDx).clear();
         adjacencyMatrix.get(vIDx).addAll(clearRow);
+        System.out.println("\tREMOVING EDGES");
+        printAdjMatrix();
     }
 
     private void removeEdgesToVertex(Vertex delVertex) {
         int vIDx = delVertex.getId() - 1;
+        System.out.println("deleting: " + vIDx);
         ArrayList<Integer> row = adjacencyMatrix.get(vIDx);
         for (int i = 0; i < row.size(); i++) {
             if (row.get(i) == 1) {
                 String id = (vIDx + 1) + "-" + (i + 1);
                 String revID = (i + 1) + "-" + (vIDx + 1);
+                System.out.println("trying to remove edges: " + id + ", and " + revID);
                 edges.remove(id);
                 edges.remove(revID);
             }
@@ -159,6 +168,15 @@ class GraphModel {
         for (ArrayList<Integer> row : adjacencyMatrix) {
             System.out.println(row);
         }
+        Set<Map.Entry<String, Edge>> edgeEntries = edges.entrySet();
+        System.out.println("THERE ARE " + edges.size() + " edges:");
+        for (Object o: edgeEntries) {
+            Map.Entry entry = (Map.Entry) o;
+            String key = (String) entry.getKey();
+            Edge e = (Edge) entry.getValue();
+            System.out.println(key + "\t->\t" + e);
+        }
+//        System.out.println(edges);
     }
 
     void updateEdgePositions(Vertex movingVertex) {
@@ -166,11 +184,15 @@ class GraphModel {
         for (Object o: edgeEntries) {
             Map.Entry entry = (Map.Entry) o;
             String key = (String) entry.getKey();
+            String[] keys = key.split("-", 2);
             Edge e = (Edge) entry.getValue();
-            if (key.contains(Integer.toString(movingVertex.getId()))) {
+            int a = Integer.parseInt(keys[0]);
+            int b = Integer.parseInt(keys[1]);
+            if (movingVertex.getId() == a || movingVertex.getId() == b) {
                 int indexID = key.indexOf(Integer.toString(movingVertex.getId()));
                 int indexSpace = key.indexOf("-");
-                if (indexID < indexSpace) {
+//                System.out.println("movingVertex: " + movingVertex.getId() + ", a: " + a + ", b: " + b + ", key: " + key + ", indexID: " + indexID + ", indexSpace: " + indexSpace);
+                if (movingVertex.getId() == a) {
                     e.setStartPosition(new Point2D(movingVertex.getX(), movingVertex.getY()));
                 }
                 else {
@@ -178,5 +200,40 @@ class GraphModel {
                 }
             }
         }
+    }
+
+    // this is going to mess up how the edges work
+    void reLabelVertices(int delId) {
+        System.out.println("deleting node: " + delId);
+        int n = vertexListProperty.size();
+        for (int i = delId - 1; i < n; i++) {
+            System.out.println("setting: " + vertexListProperty.get(i).getId() + ", to " + (i + 1));
+            vertexListProperty.get(i).setId(i + 1);
+        }
+        reLabelEdgeEntries(delId);
+    }
+
+    void reLabelEdgeEntries(int delId) {
+        Set<Map.Entry<String, Edge>> edgeEntries = edges.entrySet();
+        HashMap<String, Edge> newEdges = new HashMap<>();
+        for (Object o: edgeEntries) {
+            Map.Entry entry = (Map.Entry) o;
+            String key = (String) entry.getKey();
+            String[] keys = key.split("-", 2);
+            Edge e = (Edge) entry.getValue();
+            int a = Integer.parseInt(keys[0]);
+            int b = Integer.parseInt(keys[1]);
+            a = ((a >= delId)? (a - 1) : a);
+            b = ((b >= delId)? (b - 1) : b);
+            String newKey = a + "-" + b;
+            String oldKey = key;
+            if (a >= delId || b >= delId) {
+                key = newKey;
+                System.out.println("updating: " + oldKey + ", to " + key);
+            }
+            newEdges.put(key, e);
+        }
+        edges.clear();
+        edges.putAll(newEdges);
     }
 }

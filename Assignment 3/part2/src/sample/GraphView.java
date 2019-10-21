@@ -43,7 +43,13 @@ public class GraphView extends Pane {
 
     private Line drawEdge(int x1, int y1, int x2, int y2) {
         Line edgeLine = new Line(x1, y1, x2, y2);
-        edgeLine.setStrokeWidth(3);
+        Vertex b = Main.graphModel.getVertexAt(x2, y2);
+        if (b == null) {
+            edgeLine.setStrokeWidth(3);
+        }
+        else {
+            edgeLine.setStrokeWidth(1);
+        }
         edgeLine.setFill(Color.BLACK);
         edgeLine.setStroke(Color.BLACK);
         return edgeLine;
@@ -78,7 +84,11 @@ public class GraphView extends Pane {
             int y1 = (int) start.getY();
             int x2 = (int) end.getX();
             int y2 = (int) end.getY();
-            this.getChildren().add(drawEdge(x1, y1, x2, y2));
+            Vertex a = Main.graphModel.getVertexAt(x1, y1);
+            Vertex b = Main.graphModel.getVertexAt(x2, y2);
+            if (a != null && b != null) {
+                this.getChildren().add(drawEdge(x1, y1, x2, y2));
+            }
         }
         for (Vertex v : Main.graphModel.vertexListProperty()) {
             Circle c = new Circle(
@@ -90,7 +100,7 @@ public class GraphView extends Pane {
                 c.setFill(SELECTED_COLOR);
             }
             else {
-                c.setFill(FILL_COLOR);
+                c.setFill(v.getColor());
             }
             if (v.isConnecting()) {
                 c.setStroke(Color.BLACK);
@@ -102,6 +112,8 @@ public class GraphView extends Pane {
             Label label = new Label(Integer.toString(v.getId()));
             label.setMinSize(40, 20);
             label.setFont(new Font("times", 18));
+            label.setStyle("-fx-font-weight: bold");
+            label.setTextFill(Color.WHITE);
             label.setTextAlignment(TextAlignment.CENTER);
             label.setAlignment(Pos.CENTER);
 

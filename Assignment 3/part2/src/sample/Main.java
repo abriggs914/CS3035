@@ -1,19 +1,13 @@
 package sample;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import javax.swing.text.AbstractDocument;
-
 /**
- * CS3035 Assignment 3 - part 1
- * October 16 2019
+ * CS3035 Assignment 3 - part 2
+ * October 18 2019
  * Avery Briggs
  * 3471065
  *
@@ -38,26 +32,29 @@ public class Main extends Application {
 
     private static final int vertexRadius = 25;
     static final GraphModel graphModel = new GraphModel(vertexRadius);
-    static final InteractionModel interactionModel = new InteractionModel();
     static final GraphView graphView = new GraphView();
-//    static final GraphViewController graphViewController = new GraphViewController();
-//    static final ToolBarController toolBarController = new ToolBarController();
+    static final GraphViewController graphViewController = new GraphViewController();
+    static InteractionModel interactionModel;
+    static Scene scene;
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("toolbar.fxml"));
-//        fxmlLoader.setController(toolBarController);
-        ToolBar toolbar = (ToolBar) fxmlLoader.load();
+    public void start(Stage primaryStage) throws Exception {
 
-        primaryStage.setTitle("CS3035 Assignment 3 - part 1");
+        interactionModel = new InteractionModel();
+
+        primaryStage.setTitle("CS3035 Assignment 3 - part 2");
         primaryStage.setResizable(false);
         BorderPane borderPane = new BorderPane();
-        borderPane.setTop(toolbar);
         borderPane.setCenter(graphView);
+        borderPane.setTop(interactionModel);
 
-        Scene scene = new Scene(borderPane, 500, 500);
+        scene = new Scene(borderPane, 500, 500);
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    public static Scene getScene() {
+        return scene;
     }
 
     public static void main(String[] args) {

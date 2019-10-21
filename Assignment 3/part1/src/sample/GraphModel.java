@@ -166,8 +166,11 @@ class GraphModel {
         for (Object o: edgeEntries) {
             Map.Entry entry = (Map.Entry) o;
             String key = (String) entry.getKey();
+            String[] keys = key.split("-", 2);
             Edge e = (Edge) entry.getValue();
-            if (key.contains(Integer.toString(movingVertex.getId()))) {
+            int a = Integer.parseInt(keys[0]);
+            int b = Integer.parseInt(keys[1]);
+            if (movingVertex.getId() == a || movingVertex.getId() == b) {
                 int indexID = key.indexOf(Integer.toString(movingVertex.getId()));
                 int indexSpace = key.indexOf("-");
                 if (indexID < indexSpace) {

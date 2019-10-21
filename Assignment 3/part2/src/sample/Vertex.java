@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.geometry.Point2D;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 public class Vertex {
@@ -11,14 +12,16 @@ public class Vertex {
     private int y;
     private boolean isSelected;
     private boolean isConnecting;
+    private Color color;
 
-    Vertex(int id, int x, int y, int vertexRadius) {
+    Vertex(int id, int x, int y, int vertexRadius, Color color) {
         this.id = id;
         this.x = x;
         this.y = y;
         this.radius = vertexRadius;
         this.isSelected = false;
         this.isConnecting = false;
+        this.color = color;
     }
 
     int getX() {
@@ -57,6 +60,8 @@ public class Vertex {
         return radius;
     }
 
+    void setId(int id) {this.id = id;}
+
     int getId() {
         return id;
     }
@@ -76,6 +81,14 @@ public class Vertex {
 
     boolean isConnecting() {
         return isConnecting;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    public Color getColor() {
+        return color;
     }
 
     public String toString() {

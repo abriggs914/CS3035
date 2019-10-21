@@ -41,6 +41,6 @@ public class Edge {
     }
 
     public String toString() {
-        return "[a -> b]: [ " + vertexA + " -> " + vertexB + " ], from: ["  + startPosition + "] to [" + endPosition+ "]";
+        return "[a -> b]: [ " + vertexA.getId() + " -> " + vertexB.getId() + " ], from: ["  + startPosition + "] to [" + endPosition+ "]";
     }
 }

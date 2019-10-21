@@ -7,31 +7,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/part1_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../part2/src/sample/Edge.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../part2/src/sample/GraphModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../part2/src/sample/GraphView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../part2/src/sample/GraphViewController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../part2/src/sample/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../part2/src/sample/Vertex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/part1/sample/Edge.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/part1/sample/Edge.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/part1/sample/GraphModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/part1/sample/GraphModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/part1/sample/GraphView$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/part1/sample/GraphView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/part1/sample/GraphView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/part1/sample/GraphViewController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/part1/sample/GraphViewController$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/part1/sample/GraphViewController$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/part1/sample/GraphViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/part1/sample/GraphViewController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/part1/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/part1/sample/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/part1/sample/Vertex.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/part1/sample/Vertex.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Edge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Edge.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/GraphModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GraphModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GraphView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GraphView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GraphViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GraphViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Vertex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Vertex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../part2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part2/out/production/part2/sample/GraphModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/../part2/out/production/part2/sample/GraphModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part2/out/production/part2/sample/GraphView.class" beforeDir="false" afterPath="$PROJECT_DIR$/../part2/out/production/part2/sample/GraphView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part2/out/production/part2/sample/InteractionModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/../part2/out/production/part2/sample/InteractionModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part2/out/production/part2/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../part2/out/production/part2/sample/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part2/out/production/part2/sample/ToolBarController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part2/out/production/part2/sample/ToolBarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../part2/out/production/part2/sample/ToolBarController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part2/out/production/part2/sample/toolbar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../part2/out/production/part2/sample/toolbar.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part2/src/sample/GraphModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../part2/src/sample/GraphModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part2/src/sample/GraphView.java" beforeDir="false" afterPath="$PROJECT_DIR$/../part2/src/sample/GraphView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part2/src/sample/InteractionModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../part2/src/sample/InteractionModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part2/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../part2/src/sample/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part2/src/sample/ToolBarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../part2/src/sample/ToolBarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part2/src/sample/toolbar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../part2/src/sample/toolbar.fxml" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -103,12 +93,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/GraphModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="257">
+              <caret line="173" column="82" lean-forward="true" selection-start-line="173" selection-start-column="82" selection-end-line="173" selection-end-column="82" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="e#1988#1989#0" expanded="true" />
                 <element signature="e#2016#2017#0" expanded="true" />
                 <element signature="e#2792#2793#0" expanded="true" />
@@ -141,14 +132,16 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/GraphView.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="260">
               <caret line="52" column="40" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1664#1665#0" expanded="true" />
                 <element signature="e#1703#1704#0" expanded="true" />
+                <element signature="e#1753#1754#0" expanded="true" />
                 <element signature="e#1775#1776#0" expanded="true" />
               </folding>
             </state>
@@ -158,8 +151,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/GraphViewController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="57" column="13" lean-forward="true" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
+            <state relative-caret-position="952">
+              <caret line="57" column="13" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -225,6 +218,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -247,8 +242,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -374,7 +367,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.27760968" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.28214827" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -466,19 +459,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/GraphModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-          <folding>
-            <element signature="e#1988#1989#0" expanded="true" />
-            <element signature="e#2016#2017#0" expanded="true" />
-            <element signature="e#2792#2793#0" expanded="true" />
-            <element signature="e#2842#2843#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Vertex.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="918">
@@ -500,8 +480,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/GraphViewController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="57" column="13" lean-forward="true" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
+        <state relative-caret-position="952">
+          <caret line="57" column="13" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -514,8 +494,24 @@
           <caret line="52" column="40" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1664#1665#0" expanded="true" />
             <element signature="e#1703#1704#0" expanded="true" />
+            <element signature="e#1753#1754#0" expanded="true" />
             <element signature="e#1775#1776#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/GraphModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="173" column="82" lean-forward="true" selection-start-line="173" selection-start-column="82" selection-end-line="173" selection-end-column="82" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1988#1989#0" expanded="true" />
+            <element signature="e#2016#2017#0" expanded="true" />
+            <element signature="e#2792#2793#0" expanded="true" />
+            <element signature="e#2842#2843#0" expanded="true" />
           </folding>
         </state>
       </provider>
