@@ -17,15 +17,12 @@ public class GraphView extends Pane {
 
     private Line workingEdge;
 
-    private static final Color FILL_COLOR = Color.LIGHTBLUE;
-    private static final Color SELECTED_COLOR = Color.ORANGE;
+    static final Color SELECTED_COLOR = Color.ORANGE;
 
     GraphView() {
         this.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
         this.workingEdge = null;
-        Main.graphModel.vertexListProperty().addListener((ListChangeListener<Vertex>) v -> {
-            draw();
-        });
+        Main.graphModel.vertexListProperty().addListener((ListChangeListener<Vertex>) v -> draw());
     }
 
     boolean tryDrawingEdge(int x1, int y1, int x2, int y2) {
@@ -122,6 +119,7 @@ public class GraphView extends Pane {
             stackPane.setLayoutY(v.getPosition().getY());
             stackPane.getChildren().add(c);
             stackPane.getChildren().add(label);
+            stackPane.toBack();
 
             this.getChildren().add(stackPane);
         }
