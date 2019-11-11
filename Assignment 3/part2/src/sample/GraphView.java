@@ -3,13 +3,11 @@ package sample;
 import javafx.collections.ListChangeListener;
 import javafx.geometry.Insets;
 import javafx.geometry.Point2D;
-import javafx.geometry.Pos;
-import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
 import javafx.scene.text.Font;
-import javafx.scene.text.TextAlignment;
+import javafx.scene.text.Text;
 
 import java.util.*;
 
@@ -106,19 +104,16 @@ public class GraphView extends Pane {
                 c.setStrokeLineJoin(StrokeLineJoin.ROUND);
             }
 
-            Label label = new Label(Integer.toString(v.getId()));
-            label.setMinSize(40, 20);
-            label.setFont(new Font("times", 18));
-            label.setStyle("-fx-font-weight: bold");
-            label.setTextFill(Color.WHITE);
-            label.setTextAlignment(TextAlignment.CENTER);
-            label.setAlignment(Pos.CENTER);
+            Text txt = new Text(Integer.toString(v.getId()));
+            txt.setFont(new Font("times", 18));
+            txt.setStyle("-fx-font-weight: bold");
+            txt.setFill(Color.WHITE);
 
             StackPane stackPane = new StackPane();
             stackPane.setLayoutX(v.getPosition().getX());
             stackPane.setLayoutY(v.getPosition().getY());
             stackPane.getChildren().add(c);
-            stackPane.getChildren().add(label);
+            stackPane.getChildren().add(txt);
             stackPane.toBack();
 
             this.getChildren().add(stackPane);

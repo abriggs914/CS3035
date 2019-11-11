@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.geometry.Insets?>
+<GridPane id="#base" alignment="center" hgap="10" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vgap="10" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ToolBarController">
+    <columnConstraints>
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+    </rowConstraints>
+    <ToolBar prefHeight="35.0" prefWidth="400.0">
+      <items>
+          <HBox>
+              <ToggleButton fx:id="squareToggleButton" id="#squareToggleButton" selected="true" text="Square" toggleGroup="$shapeToggleGroup">
+                  <font>
+                      <Font name="System Bold" size="15.0" />
+                  </font>
+              </ToggleButton>
+              <ToggleButton fx:id="circleToggleButton" id="#circleToggleButton" text="Circle" toggleGroup="$shapeToggleGroup">
+                  <font>
+                      <Font name="System Bold" size="15.0" />
+                  </font>
+              </ToggleButton>
+              <ToggleButton fx:id="triangleToggleButton" id="#triangleToggleButton" text="Triangle" toggleGroup="$shapeToggleGroup">
+                  <font>
+                      <Font name="System Bold" size="15.0" />
+                  </font>
+              </ToggleButton>
+              <HBox.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+              </HBox.margin>
+          </HBox>
+          <HBox>
+              <ToggleButton fx:id="cutToggleButton" id="#cutToggleButton" text="Cut" toggleGroup="$shapeToggleGroup">
+                  <font>
+                      <Font name="System Bold" size="15.0" />
+                  </font>
+              </ToggleButton>
+              <ToggleButton fx:id="pasteToggleButton" id="#pasteToggleButton" text="Paste" toggleGroup="$shapeToggleGroup">
+                  <font>
+                      <Font name="System Bold" size="15.0" />
+                  </font>
+              </ToggleButton>
+              <HBox.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+              </HBox.margin>
+          </HBox>
+      </items>
+    </ToolBar>
+</GridPane>

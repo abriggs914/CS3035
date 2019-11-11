@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
 
 class GraphViewController {
 
@@ -56,11 +57,11 @@ class GraphViewController {
                         movingVertex.select();
 //                        System.out.println("\t\tDrag click\t->\tmove vertex\n\t\tMovingVertex: " + movingVertex);
                         if (!e.isDragDetect()) {
-                            if (e.getTarget().getClass() == LabeledText.class) {
-                                LabeledText txt = (LabeledText) e.getTarget();
+                            if (e.getTarget().getClass() == Text.class) {
+                                Text txt = (Text) e.getTarget();
                                 txt.setText("A");
                             }
-                            else if (e.getTarget().getClass() == Circle.class) {
+                            if (e.getTarget().getClass() == Circle.class) {
                                 Circle c = (Circle) e.getTarget();
                                 c.setFill(GraphView.SELECTED_COLOR);
                             }
