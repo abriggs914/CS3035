@@ -3,34 +3,49 @@ package sample;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.shape.Rectangle;
 
-public class InteractionModel {
+
+class InteractionModel {
     private SelectionGroup selectedSquares;
     private SimpleObjectProperty<Rectangle> selectRegion;
+    private double[] startClick;
 
-    public InteractionModel()
-    {
+    InteractionModel() {
+        startClick = new double[2];
         selectedSquares = new SelectionGroup();
-        selectRegion = new SimpleObjectProperty<Rectangle>();
+        selectRegion = new SimpleObjectProperty<>();
     }
 
-    public SimpleObjectProperty<Rectangle> selectRegionProperty()
+    SimpleObjectProperty<Rectangle> selectRegionProperty()
     {
         return selectRegion;
     }
 
-    public SelectionGroup getSelectedSquares(){
+    SelectionGroup getSelectedSquares(){
         return selectedSquares;
     }
 
-    public void startSelectRegion(double x, double y)
-    {
+    void startSelectRegion(double x, double y) {
+        startClick[0] = x;
+        startClick[1] = y;
         selectRegion.set(new Rectangle(x,y,0,0));
     }
 
-    public void updateSelectRegion(double x, double y)
-    {
+    void clearSelected() {
+        selectedSquares.itemsProperty().clear();
+    }
+
+    void updateSelectRegion(double x, double y) {
         Rectangle selectRect = selectRegionProperty().getValue();
-        selectRect.setWidth(x - selectRect.getX());
-        selectRect.setHeight(y - selectRect.getY());
+        double x1, x2, y1, y2, width, height;
+        x1 = Math.min(x, startClick[0]);
+        y1 = Math.min(y, startClick[1]);
+        x2 = Math.max(x, startClick[0]);
+        y2 = Math.max(y, startClick[1]);
+        width = x2 - x1;
+        height = y2 - y1;
+        selectRect.setX(x1);
+        selectRect.setY(y1);
+        selectRect.setWidth(width);
+        selectRect.setHeight(height);
     }
 }

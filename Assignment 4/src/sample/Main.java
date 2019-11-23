@@ -16,11 +16,12 @@ import javafx.scene.Scene;
  *
  */
 public class Main extends Application {
-    public static final int squareSideLength = 40;
-    public static final Model model = new Model(squareSideLength);
-    public static final InteractionModel iModel = new InteractionModel();
-    public static final View view = new View();
+    private static final int squareSideLength = 40;
+    static final Model model = new Model(squareSideLength);
+    static final InteractionModel iModel = new InteractionModel();
+    static final View view = new View();
     public static final Controller controller = new Controller();
+    public static final ToolBarController toolBarController = new ToolBarController();
 
     @Override
     public void start(Stage primaryStage) {
@@ -39,26 +40,3 @@ public class Main extends Application {
         launch(args);
     }
 }
-/*
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
-public class Main extends Application {
-
-    @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
-        primaryStage.show();
-    }
-
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-}
-*/

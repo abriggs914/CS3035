@@ -1,23 +1,25 @@
 package sample;
 
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Tooltip;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 
-public class ToolBar extends Pane {
+class ToolBar extends Pane {
 
-    public ToggleGroup shapeToggleGroup;
-    public ToggleGroup actionToggleGroup;
+    private ToggleGroup shapeToggleGroup;
 
-    public ToggleButton squareToggleButton;
-    public ToggleButton circleToggleButton;
-    public ToggleButton triangleToggleButton;
-    public ToggleButton cutToggleButton;
-    public ToggleButton pasteToggleButton;
+    private ToggleButton squareToggleButton;
+    private ToggleButton circleToggleButton;
+    private ToggleButton triangleToggleButton;
+    private Button cutButton;
+    private Button pasteButton;
 
     ToolBar() {
         init();
@@ -25,36 +27,43 @@ public class ToolBar extends Pane {
 
     private void init() {
         this.shapeToggleGroup = new ToggleGroup();
-        this.actionToggleGroup = new ToggleGroup();
 
-        this.squareToggleButton = new ToggleButton("Square");
-        this.circleToggleButton = new ToggleButton("Circle");
-        this.triangleToggleButton = new ToggleButton("Triangle");
+        this.squareToggleButton = new ToggleButton();
+        this.circleToggleButton = new ToggleButton();
+        this.triangleToggleButton = new ToggleButton();
 
-        this.cutToggleButton = new ToggleButton("Cut");
-        this.pasteToggleButton = new ToggleButton("Paste");
+        this.cutButton = new Button();
+        this.pasteButton = new Button();
 
         squareToggleButton.setFont(new Font("Helvetica", 15));
         circleToggleButton.setFont(new Font("Helvetica", 15));
         triangleToggleButton.setFont(new Font("Helvetica", 15));
-        cutToggleButton.setFont(new Font("Helvetica", 15));
-        pasteToggleButton.setFont(new Font("Helvetica", 15));
+        cutButton.setFont(new Font("Helvetica", 15));
+        pasteButton.setFont(new Font("Helvetica", 15));
+
+        squareToggleButton.setTooltip(new Tooltip("square"));
+        circleToggleButton.setTooltip(new Tooltip("circle"));
+        triangleToggleButton.setTooltip(new Tooltip("triangle"));
+        cutButton.setTooltip(new Tooltip("cut"));
+        pasteButton.setTooltip(new Tooltip("paste"));
+
+        squareToggleButton.setGraphic(new ImageView(new Image("resources/square.png")));
+        circleToggleButton.setGraphic(new ImageView(new Image("resources/circle.png")));
+        triangleToggleButton.setGraphic(new ImageView(new Image("resources/triangle.png")));
+        cutButton.setGraphic(new ImageView(new Image("resources/cut.png")));
+        pasteButton.setGraphic(new ImageView(new Image("resources/paste.png")));
 
         shapeToggleGroup.getToggles().addAll(squareToggleButton, circleToggleButton, triangleToggleButton);
-        actionToggleGroup.getToggles().addAll(cutToggleButton, pasteToggleButton);
         squareToggleButton.setSelected(true);
 
         HBox shapeButtons = new HBox();
         HBox actionButtons = new HBox();
 
         shapeButtons.getChildren().addAll(squareToggleButton, circleToggleButton, triangleToggleButton);
-        actionButtons.getChildren().addAll(cutToggleButton, pasteToggleButton);
+        actionButtons.getChildren().addAll(cutButton, pasteButton);
 
         shapeButtons.setMinWidth(150);
         actionButtons.setMinWidth(100);
-
-        shapeButtons.setStyle("-fx-border-color: black");
-        actionButtons.setStyle("-fx-border-color: black");
 
         HBox buttons = new HBox();
         buttons.setPadding(new Insets(5,15,10,15));
@@ -63,5 +72,26 @@ public class ToolBar extends Pane {
         getChildren().addAll(buttons);
         this.setMinWidth(400.0);
         this.setMinHeight(35.0);
+        this.setStyle("-fx-background-color: #708090");
+    }
+
+    ToggleButton getSquareToggleButton() {
+        return squareToggleButton;
+    }
+
+    ToggleButton getCircleToggleButton() {
+        return circleToggleButton;
+    }
+
+    ToggleButton getTriangleToggleButton() {
+        return triangleToggleButton;
+    }
+
+    Button getCutButton() {
+        return cutButton;
+    }
+
+    Button getPasteButton() {
+        return pasteButton;
     }
 }

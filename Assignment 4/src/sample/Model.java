@@ -4,55 +4,61 @@ import java.util.ArrayList;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
-public class Model {
-    private SimpleListProperty<Rectangle> squareListProperty;
+class Model {
+
+    private SimpleListProperty<Shape> shapesListProperty;
+    private SimpleListProperty<Shape> cutShapesListProperty;
 
     private int squareSideLength;
+    private Shapes currShape;
 
-    public Model(int squareSideLength) {
-        ArrayList<Rectangle> list = new ArrayList<Rectangle>();
-        ObservableList<Rectangle> observableList = (ObservableList<Rectangle>) FXCollections.observableArrayList(list);
-        squareListProperty = new SimpleListProperty<Rectangle>(observableList);
-
+    Model(int squareSideLength) {
+        ArrayList<Shape> list = new ArrayList<>();
+        ObservableList<Shape> observableList = FXCollections.observableArrayList(list);
+        ObservableList<Shape> observableListCut = FXCollections.observableArrayList(list);
+        shapesListProperty = new SimpleListProperty<>(observableList);
+        cutShapesListProperty = new SimpleListProperty<>(observableListCut);
+        this.currShape = Shapes.SQUARE;
         this.squareSideLength = squareSideLength;
     }
 
-    public SimpleListProperty<Rectangle> squareListProperty(){
-        return squareListProperty;
+    SimpleListProperty<Shape> shapeListProperty(){
+        return shapesListProperty;
     }
 
-    public int getSquareSideLegnth() {return squareSideLength;}
+    private int getSquareSideLength() {return squareSideLength;}
 
-    public void addSquare(double x, double y)
-    {
-        int squareX = (int) x - Main.model.getSquareSideLegnth()/2;
-        int squareY = (int) y - Main.model.getSquareSideLegnth()/2;
+    void addSquare(double x, double y) {
+        int squareX = (int) x - Main.model.getSquareSideLength()/2;
+        int squareY = (int) y - Main.model.getSquareSideLength()/2;
 
-        Rectangle newSquare = new Rectangle(squareX, squareY, squareSideLength, squareSideLength);
-        squareListProperty.add(newSquare);
+        Shape shape = new DrawableShapes().newShape(squareX, squareY, squareSideLength, currShape);
+        shapesListProperty.add(shape);
     }
 
-    public void deleteSquareAt(int x, int y)
-    {
-        Shape delSquare = getSquareAt(x, y);
-        squareListProperty.remove(delSquare);
+    void shapeIsSquare() {
+        this.currShape = Shapes.SQUARE;
     }
 
-    private Shape getSquareAt(int x, int y)
-    {
-        Rectangle square = null;
+    void shapeIsCircle() {
+        this.currShape = Shapes.CIRCLE;
+    }
 
-        for (Rectangle s : squareListProperty)
-        {
-            if (s.contains(x, y))
-            {
-                square = s;
-            }
-        }
+    void shapeIsTriangle() {
+        this.currShape = Shapes.TRIANGLE;
+    }
 
-        return square;
+    ObservableList<Shape> getCutShapesListProperty() {
+        return cutShapesListProperty.get();
+    }
+
+    SimpleListProperty<Shape> cutShapesListPropertyProperty() {
+        return cutShapesListProperty;
+    }
+
+    void resetCutList() {
+        cutShapesListProperty.clear();
     }
 }

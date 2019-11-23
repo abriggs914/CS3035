@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Assignment 4:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Assignment_4_jar</output-path>
+    <root id="archive" name="Assignment 4.jar">
+      <element id="module-output" name="Assignment 4" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/sample/Shapes.java" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/sample/SelectionGroup.java" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/sample/Model.java" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/sample/Main.java" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/sample/InteractionModel.java" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/sample/DrawableShapes.java" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/sample/View.java" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/sample/ToolBarController.java" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/sample/Controller.java" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/sample/ToolBar.java" />
+    </root>
+  </artifact>
+</component>

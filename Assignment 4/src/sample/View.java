@@ -1,86 +1,78 @@
 package sample;
 
 import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
 import javafx.scene.Group;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 
-public class View extends BorderPane {
-    public static final Color FILL_COLOR = Color.GREEN;
-    public static final Color SELECTED_FILL_COLOR = Color.BLUE;
+class View extends Pane {
+
+    private static final Color FILL_COLOR = Color.GREEN;
+    private static final Color SELECTED_FILL_COLOR = Color.BLUE;
     private static Group root;
+    private ToolBar toolbar;
 
-    public View() {
-        Main.model.squareListProperty().addListener(new ListChangeListener<Rectangle>() {
-            @Override
-            public void onChanged(ListChangeListener.Change<? extends Rectangle> c) {
-                while (c.next())
-                {
-                    for (Rectangle r : c.getRemoved())
-                        root.getChildren().remove(r);
+    View() {
 
-                    for (Rectangle r : c.getAddedSubList())
-                    {
-                        r.setStroke(Color.BLACK);
-                        r.setFill(FILL_COLOR);
-                        root.getChildren().add(r);
+        Main.model.shapeListProperty().addListener((ListChangeListener<Shape>) c -> {
+            while (c.next()) {
+                for (Shape r : c.getRemoved()) {
+                    root.getChildren().remove(r);
+                }
+                for (Shape r : c.getAddedSubList()) {
+                    r.setStroke(Color.BLACK);
+                    r.setFill(FILL_COLOR);
+                    root.getChildren().add(r);
+                    if (Main.model.cutShapesListPropertyProperty().contains(r)) {
+                        deselect(r);
                     }
                 }
             }
         });
-        Main.iModel.getSelectedSquares().itemsProperty().addListener(new ListChangeListener<Rectangle>() {
-            @Override
-            public void onChanged(ListChangeListener.Change<? extends Rectangle> c) {
-                deselectAll();
-                for (Rectangle r : Main.iModel.getSelectedSquares().itemsProperty())
-                {
-                    selectSquare(r);
-                }
+        Main.iModel.getSelectedSquares().itemsProperty().addListener((ListChangeListener<Shape>) c -> {
+            deselectAll();
+            for (Shape r : Main.iModel.getSelectedSquares().itemsProperty()) {
+                selectSquare(r);
             }
         });
 
-        Main.iModel.selectRegionProperty().addListener(new ChangeListener<Rectangle>() {
-            @Override
-            public void changed(ObservableValue<? extends Rectangle> observable, Rectangle oldValue,
-                                Rectangle newValue) {
-                root.getChildren().remove(oldValue);
+        Main.iModel.selectRegionProperty().addListener((ChangeListener<Shape>) (observable, oldValue, newValue) -> {
+            root.getChildren().remove(oldValue);
 
-                if (newValue !=null)
-                {
-                    root.getChildren().add(newValue);
-                    newValue.setFill(new Color(0,0,.5,.3));
-                    newValue.setStroke(new Color(0,0,.5,1));
-                }
+            if (newValue !=null) {
+                root.getChildren().add(newValue);
+                newValue.setFill(new Color(0,0,.5,.3));
+                newValue.setStroke(new Color(0,0,.5,1));
             }
         });
 
         root = new Group();
-        ToolBar toolBar = new ToolBar();
-        toolBar.setMinSize(400, 35);
-        toolBar.setStyle("-fx-border-color: purple");
-        setTop(toolBar);
-        setCenter(root);
-
+        this.toolbar = new ToolBar();
+        toolbar.setMinSize(420, 35);
+        this.getChildren().addAll(root, toolbar);
     }
 
-    public void deselect(Rectangle r)
-    {
+    private void deselect(Shape r) {
         r.setFill(FILL_COLOR);
         r.setStrokeWidth(1);
     }
 
-    public void deselectAll() {
-        for (Rectangle s : Main.model.squareListProperty())
+    private void deselectAll() {
+        for (Shape s : Main.model.shapeListProperty())
         {
             deselect(s);
         }
     }
 
-    public void selectSquare(Rectangle node) {
+    private void selectSquare(Shape node) {
         node.setFill(View.SELECTED_FILL_COLOR);
         node.setStrokeWidth(4);
     }
+
+    ToolBar getToolbar() {
+        return toolbar;
+    }
+
 }
